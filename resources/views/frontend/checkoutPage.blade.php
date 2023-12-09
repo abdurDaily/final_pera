@@ -58,7 +58,7 @@
                     <div class="row">
                         <h4 class="mb-30">Billing Details</h4>
                         <div class="billing-detail-blk">
-                            <form method="post">
+                            <form method="post" >
                                 <div class="row">
                                     <div class="form-group col-lg-6">
                                         <label>First Name <span class="text-danger">*</span></label>

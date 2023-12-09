@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\DiscountPrice;
 use App\Models\ProductWishlist;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -319,16 +320,17 @@ class CartController extends Controller
 
     public function checkout(Request $request)
     {
+
+        // dd($request->all());
         $request->validate([
             'discount_price' => 'required',
         ]);
+
         $discountPrice = new DiscountPrice();
-        $discountPrice->user_id = Auth::user()->id;
+        $discountPrice->user_id = Auth::user()->id; 
         $discountPrice->discount_price = $request->discount_price;
         $discountPrice->save();
-
         $price = DiscountPrice::find($discountPrice->id);
-
         $cartItems = Cart::with('product', 'productPrice')
             ->where('user_id', Auth::user()->id)
             ->get();
@@ -337,8 +339,41 @@ class CartController extends Controller
 
     public function stripe(Request $request)
     {
+        // $data = Order::all();
+        $data = new Order();
+        // dd($data);
+        $data->fname = $request->fname;
+        $data->fname = $request->phone;
+        $data->email = $request->email;
+        $data->country = $request->country;
+        $data->billing_address = $request->billing_address;
+        $data->city = $request->city;
+        $data->zipcode = $request->zipcode;
+        // $data->zipcode = $request->zipcode;
+        $data->total_ammount = $request->total_ammount;
+        $data->payment_method = $request->payment_method;
+        $data->payment_number = $request->payment_number;
+        $data->txn_id = $request->txn_id;
+        $data->remember = $request->remember;
+        $data->save();
+        return redirect()->route('paymentWithStripe');
 
-        dd($request->all());
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // dd($request->all());
+
+        
     }
 
 
