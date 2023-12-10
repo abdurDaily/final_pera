@@ -77,6 +77,22 @@
             </ul>
         </li>
 
+
+        {{-- PAYMENT STATUS START --}}
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">payment</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('payment') }}"><i class="bx bx-right-arrow-alt"></i>payment list</a>
+                </li>
+
+            </ul>
+        </li>
+        {{-- PAYMENT STATUS END --}}
+
     </ul>
     <!--end navigation-->
 </div>

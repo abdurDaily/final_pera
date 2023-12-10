@@ -202,6 +202,11 @@ Route::controller(CartController::class)->group(function(){
 
     // checkout
     Route::post('/checkout','checkout')->name('checkout')->middleware(['auth']);
+
+    // payment History 
+    Route::get('/payment','payment')->name('payment')->middleware(['auth']);
+    Route::get('/payment-delete/{id}','paymentDelete')->name('paymentdelete')->middleware(['auth']);
+
     //stripe payement
         Route::post('/payment-with-stripe','stripe')->name('paymentWithStripe');
 });

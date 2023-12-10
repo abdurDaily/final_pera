@@ -10,8 +10,7 @@
                     <p>{{ Session::get('success') }}</p>
                 </div>
             @endif
-            <form role="form" action="{{ route('paymentWithStripe') }}" method="POST" data-cc-on-file="false"
-                data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form" class="require-validation">
+            <form role="form" action="{{ route('paymentWithStripe') }}" method="POST" id="payment-form" class="require-validation">
                 @csrf
                 <div class="row">
 
@@ -136,17 +135,17 @@
                             <div class="payment_option">
                                 <div class="custome-radio">
                                     <input class="payment_method form-check-input" type="radio" name="payment_method"
-                                        id="cod" checked name="payment_method" data-type="cod">
+                                        id="cod" checked name="payment_method" data-type="cod" value="cod">
                                     <label class="form-check-label" for="cod">Cash On Devlivery</label>
                                 </div>
                                 <div class="custome-radio">
                                     <input class="payment_method form-check-input" type="radio" name="payment_method"
-                                        id="bkash" name="payment_method" data-type="bkash">
+                                        id="bkash" name="payment_method" data-type="bkash" value="bkash">
                                     <label class="form-check-label" for="bkash">Bkash</label>
                                 </div>
                                 <div class="custome-radio">
                                     <input class="payment_method form-check-input" type="radio" name="payment_method"
-                                        id="rocket" name="payment_method" data-type="rocket">
+                                        id="rocket" name="payment_method" data-type="rocket" value="rocket">
                                     <label class="form-check-label" for="rocket">Rocket</label>
                                 </div>
                                 <div class="online_payment_form">

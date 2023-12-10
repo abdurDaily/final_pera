@@ -339,11 +339,12 @@ class CartController extends Controller
 
     public function stripe(Request $request)
     {
+        // dd($request->all());
         // $data = Order::all();
         $data = new Order();
         // dd($data);
         $data->fname = $request->fname;
-        $data->fname = $request->phone;
+        $data->phone = $request->phone;
         $data->email = $request->email;
         $data->country = $request->country;
         $data->billing_address = $request->billing_address;
@@ -356,7 +357,7 @@ class CartController extends Controller
         $data->txn_id = $request->txn_id;
         $data->remember = $request->remember;
         $data->save();
-        return redirect()->route('paymentWithStripe');
+        return redirect()->route('home.create');
 
 
 
@@ -374,6 +375,21 @@ class CartController extends Controller
         // dd($request->all());
 
         
+    }
+
+
+    // PAYMENT DELETE
+    public function paymentDelete($id){
+        $data = Order::find($id)->delete();
+        return back();
+
+    }
+
+
+
+    public function payment(){
+        $allPayment = Order::all();
+        return view('backend.payment.paymentHistory',compact('allPayment'));
     }
 
 
